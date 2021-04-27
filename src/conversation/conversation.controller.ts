@@ -22,14 +22,14 @@ export class ConversationController {
     return this.conversationService.getConversationByUrlLink(conversationLink);
   }
 
-  @Post()
+  @Post("/conversationLink")
   addUserByConversationLink(@Query('conversationLink') conversationLink: string, @Body() user: User) {
     return this.conversationService.addUserByConversationLink(conversationLink, user);
   }
 
   @Post()
-  save(@Body() conversation: Conversation) {
-    return this.conversationService.save(conversation);
+  async save(@Body() conversation: Conversation):Promise<Conversation> {
+    return await this.conversationService.save(conversation);
   }
 
   @Put("/name")

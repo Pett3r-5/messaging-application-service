@@ -48,7 +48,7 @@ export class ConversationService {
         "users": conversation.users,
         "messages": conversation.messages
       },
-      { upsert: true }
+      { upsert: true, new:true }
     )
   }
 

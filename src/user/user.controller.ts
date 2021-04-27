@@ -11,7 +11,7 @@ export class UserController {
     return this.userService.findOrCreateUser(user)
   }
 
-  @Put()
+  @Put("/name")
   updateName(@Query('clientId') clientId: string, @Query('name') name: string) {
     return this.userService.updateName(clientId, name) 
   }
