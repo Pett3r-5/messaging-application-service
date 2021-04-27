@@ -6,7 +6,7 @@ import { User } from '../user/User.schema'
 export type MessageDocument = Message & Document;
 
 @Schema()
-export class Message {
+export class Message extends Document {
     @Prop()
     _id: Types.ObjectId
 
