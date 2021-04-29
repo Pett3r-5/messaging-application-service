@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Put, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Put, Query } from '@nestjs/common';
 import { User } from './User.schema';
 import { UserService } from './user.service';
 
@@ -7,12 +7,12 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Put()
-  findOrCreateUser(@Body('user') user: User) {
+  findOrCreateUser(@Body() user: User) {
     return this.userService.findOrCreateUser(user)
   }
 
-  @Put("/name")
-  updateName(@Query('clientId') clientId: string, @Query('name') name: string) {
-    return this.userService.updateName(clientId, name) 
+  @Put("/name/:name")
+  updateName(@Param('name') name: string, @Body() body: {clientId: string, name: string }) {
+    return this.userService.updateName(body.clientId, body.name) 
   }
 }
