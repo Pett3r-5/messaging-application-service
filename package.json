@@ -23,21 +23,22 @@
   "dependencies": {
     "@nestjs/cli": "^7.0.0",
     "@nestjs/common": "^7.0.0",
+    "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.0.0",
     "@nestjs/mongoose": "^7.2.4",
     "@nestjs/platform-express": "^7.0.0",
     "mongoose": "^5.12.5",
-    "webpack": "^5.36.0",
-    "webpack-node-externals": "^3.0.0",
-    "run-script-webpack-plugin": "0.0.11",
     "nest": "^0.1.6",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
+    "run-script-webpack-plugin": "0.0.11",
     "rxjs": "^6.5.4",
+    "ts-loader": "^6.2.1",
     "ts-node": "^8.6.2",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^3.7.4",
-    "ts-loader": "^6.2.1"
+    "webpack": "^5.36.0",
+    "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
     "@nestjs/schematics": "^7.0.0",
