@@ -27,6 +27,9 @@
     "@nestjs/mongoose": "^7.2.4",
     "@nestjs/platform-express": "^7.0.0",
     "mongoose": "^5.12.5",
+    "webpack": "^5.36.0",
+    "webpack-node-externals": "^3.0.0",
+    "run-script-webpack-plugin": "0.0.11",
     "nest": "^0.1.6",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
@@ -46,15 +49,12 @@
     "eslint-plugin-import": "^2.20.1",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
-    "run-script-webpack-plugin": "0.0.11",
     "supertest": "^4.0.2",
     "ts-jest": "25.2.1",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.6.2",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.7.4",
-    "webpack": "^5.36.0",
-    "webpack-node-externals": "^3.0.0"
+    "typescript": "^3.7.4"
   },
   "jest": {
     "moduleFileExtensions": [
