@@ -9,8 +9,6 @@ export class MessageService {
   constructor(@InjectModel("Message") private readonly message: Model<Message>) { }
 
   public createMessage(message: Message) {
-    console.log("createMessage")
-    console.log(message)
     if (!message) {
       return Promise.reject("trying to save empty Messagesaved")
     }
@@ -45,8 +43,6 @@ export class MessageService {
   }
 
   public async populateMessages(messages: Array<Types.ObjectId | string>) {
-    console.log("populate")
-    console.log(messages)
     
     const stringIds = messages.filter(message=>typeof message==="string")
     const objectMessages = messages.filter(message=>!(typeof message==="string"))

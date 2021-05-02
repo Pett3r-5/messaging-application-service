@@ -20,12 +20,13 @@ export class ConversationService {
     return (
       this.conversation.findOneAndUpdate({ "conversationLink": conversationLink },
         {
-          $push:
-          {
-            clientId: user.clientId,
-            name: user.name,
-            isConversationOwner: false,
-            isOnline: true
+          $push: {
+            "users": {
+              clientId: user.clientId,
+              name: user.name,
+              isConversationOwner: false,
+              isOnline: true
+            }
           }
         },
         { new: true }

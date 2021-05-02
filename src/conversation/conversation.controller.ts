@@ -12,13 +12,11 @@ export class ConversationController {
 
   @Get('clientId/:clientId')
   getConversationsByClientId(@Param('clientId') clientId: string) {
-    console.log("getConversationsByClientId");
     return this.conversationService.getConversationsByClientId(clientId);
   }
 
   @Get('id/:id')
   getConversationById(@Param('id') id: string) {
-    console.log("getConversationById");
     return this.conversationService.getConversationById(id);
   }
   
