@@ -14,6 +14,11 @@ export class ConversationService {
 
   public getConversationByUrlLink = (conversationLink: string) => this.conversation.findOne({ "conversationLink": conversationLink })
 
+  public getConversationBySubject = (subject: string) => (this.conversation.find({
+    isPublic: true,
+    subject: new RegExp(subject, 'i')
+  }))
+
   public addUserByConversationLink(conversationLink: string, user: User) {
     user.isConversationOwner = false;
     user.isOnline = true;

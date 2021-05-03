@@ -30,6 +30,11 @@ export class ConversationController {
     return res
   }
 
+  @Get("subject/:subject")
+  async getConversationBySubject(@Param('subject') subject: string) {
+    return this.conversationService.getConversationBySubject(subject);
+  }
+
   @Post()
   async create(@Body() conversation: Conversation):Promise<Conversation> {
     return this.conversationService.create(conversation);
