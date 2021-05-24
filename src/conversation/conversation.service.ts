@@ -76,10 +76,7 @@ export class ConversationService {
 
   public deleteConversationByLink = (conversationLink: string) => this.conversation.findOneAndDelete({ "conversationLink": conversationLink })
 
-  public getConversationByClientIdAndPersistStatus = (clientId:string, persist:boolean) => {
-    console.log("getConversationByClientIdAndPersistStatus");
-    console.log(clientId);
-    return this.conversation.find({"users.clientId": clientId, "persist": persist})
-  }
+  public getConversationByClientIdAndPersistStatus = (clientId:string, persist:boolean) => this.conversation.find({"users.clientId": clientId, "persist": persist})
+
   
 }
