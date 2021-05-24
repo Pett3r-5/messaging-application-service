@@ -17,11 +17,17 @@ export class ConversationService {
   public getConversationBySubject = (subject: string) => (this.conversation.find({
     isPublic: true,
     subject: new RegExp(subject, 'i')
-  }))
+  }).sort({_id:-1}))
 
-  public addUserByConversationLink(conversationLink: string, user: User) {
+  public async addUserByConversationLink(conversationLink: string, user: User) {
     user.isConversationOwner = false;
     user.isOnline = true;
+
+    const conversationAlreadyHasUser = await this.conversation.findOne({"conversationLink": conversationLink, "users.clientId": user.clientId}).exec()
+    if(!!conversationAlreadyHasUser) {
+      return conversationAlreadyHasUser
+    }
+
     return (
       this.conversation.findOneAndUpdate({ "conversationLink": conversationLink },
         {
@@ -68,5 +74,12 @@ export class ConversationService {
     { "users.clientId": id },
     { "users.$.name": name }))
 
-  public deleteConversation = (id: string) => this.conversation.findByIdAndDelete(id)
+  public deleteConversationByLink = (conversationLink: string) => this.conversation.findOneAndDelete({ "conversationLink": conversationLink })
+
+  public getConversationByClientIdAndPersistStatus = (clientId:string, persist:boolean) => {
+    console.log("getConversationByClientIdAndPersistStatus");
+    console.log(clientId);
+    return this.conversation.find({"users.clientId": clientId, "persist": persist})
+  }
+  
 }

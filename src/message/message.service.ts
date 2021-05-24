@@ -57,4 +57,6 @@ export class MessageService {
     { "sentBy.clientId": clientId },
     { "$set": { "sentBy.name": name } }
   ))
+
+  public deleteMessage = (id: string) => this.message.findByIdAndDelete(id)
 }

@@ -15,6 +15,11 @@ export class ConversationController {
     return this.conversationService.getConversationsByClientId(clientId);
   }
 
+  @Get("persist-false/clientId/:clientId")
+  async getConversationByClientIdAndPersistStatus(@Param('clientId') clientId: string) {
+    return this.conversationService.getConversationByClientIdAndPersistStatus(clientId, false);
+  }
+
   @Get('id/:id')
   getConversationById(@Param('id') id: string) {
     return this.conversationService.getConversationById(id);
@@ -34,6 +39,8 @@ export class ConversationController {
   async getConversationBySubject(@Param('subject') subject: string) {
     return this.conversationService.getConversationBySubject(subject);
   }
+
+  
 
   @Post()
   async create(@Body() conversation: Conversation):Promise<Conversation> {
@@ -62,10 +69,17 @@ export class ConversationController {
   updateUserName(@Body() user: { id: string, name: string}) {
     return this.conversationService.updateUserName(user.id, user.name);
   }
+  
 
-  @Delete()
-  deleteConversation(@Query('id') id: string) {
-    return this.conversationService.deleteConversation(id);
+  @Delete("/conversationLink/:conversationLink")
+  async deleteConversation(@Param('conversationLink') conversationLink: string) {
+    const conv = await this.getConversationByUrlLink(conversationLink)
+    conv.messages.forEach((message)=>{
+      this.messageService.deleteMessage(message)
+    })
+
+    return this.conversationService.deleteConversationByLink(conversationLink);
+    
   }
 
   
